@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mother Teresa Institute Of Technology</title>
+    <style>
+        /* Reset and base styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #1b0122;
+        }
+        a {
+            text-decoration: none;
+            color: #1b0122;
+        }
+        a:hover {
+            color: #800024;
+        }
+        header {
+            background-color: #e6e0eb;
+            border-bottom: 5px solid #1b0122;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        header img {
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+            border: 5px solid #1b0122;
+            margin-right: 20px;
+        }
+        header .title {
+            flex-grow: 1;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            min-width: 250px;
+        }
+        header .contact {
+            font-size: 1.2rem;
+            text-align: right;
+            min-width: 200px;
+        }
+        nav {
+            background-color: #1b0122;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: white;
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            border-right: 1px solid #4a3a66;
+        }
+        nav a:last-child {
+            border-right: none;
+        }
+        nav a:hover {
+            background-color: #800024;
+        }
+        .announcement {
+            background-color: #800024;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 1.2rem;
+            font-weight: bold;
+            animation: slideIn 10s linear infinite alternate;
+        }
+        @keyframes slideIn {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .info-sections {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+        .info-box {
+            background-color: white;
+            border: 3px solid #1b0122;
+            border-radius: 20px;
+            flex: 1 1 30%;
+            min-width: 250px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 2px 2px 8px rgba(27,1,34,0.2);
+        }
+        .info-box h2 {
+            color: #800024;
+            margin-bottom: 10px;
+        }
+        .info-box p {
+            font-size: 1.1rem;
+            margin: 10px 0;
+        }
+        .info-box ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .info-box ul li {
+            margin: 8px 0;
+        }
+        .info-box ul li a {
+            color: #1b0122;
+            font-weight: bold;
+        }
+        .info-box ul li a:hover {
+            color: #800024;
+        }
+        footer {
+            background-color: #1b0122;
+            color: white;
+            text-align: center;
+            padding: 15px 10px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            header .contact {
+                text-align: center;
+                margin-top: 10px;
+            }
+            nav {
+                flex-direction: column;
+            }
+            nav a {
+                border: none;
+                border-bottom: 1px solid #4a3a66;
+                padding: 10px 0;
+            }
+            nav a:last-child {
+                border-bottom: none;
+            }
+            .info-sections {
+                flex-direction: column;
+                align-items: center;
+            }
+            .info-box {
+                flex: 1 1 100%;
+                max-width: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header role="banner">
+        <img src="logo.png" alt="Mother Teresa Institute Logo" />
+        <div class="title">Mother Teresa Institute Of Technology</div>
+        <div class="contact" aria-label="Contact Information">
+            Contact us<br />
+            Phone: 0080-8088-84054
+        </div>
+    </header>
+    <nav role="navigation" aria-label="Primary Navigation">
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="register.html">Register</a>
+        <a href="login.html">Login</a>
+    </nav>
+    <div class="announcement" role="region" aria-live="polite" aria-atomic="true">
+        Admissions are open from 20-05-2025 to 09-06-2025
+    </div>
+    <main role="main">
+        <section class="info-sections" aria-label="Important Information">
+            <article class="info-box" tabindex="0">
+                <h2>Exam Results</h2>
+                <ul>
+                    <li><a href="https://www.google.com/" target="_blank" rel="noopener noreferrer">V Semester Results</a></li>
+                </ul>
+            </article>
+            <article class="info-box" tabindex="0">
+                <h2>Placements</h2>
+                <p>Latest placement updates and company visits will be posted here.</p>
+            </article>
+            <article class="info-box" tabindex="0">
+                <h2>Events / Achievements</h2>
+                <p>Stay tuned for upcoming events and achievements of our students and faculty.</p>
+            </article>
+        </section>
+    </main>
+    <footer role="contentinfo">
+        &copy; 2024 Mother Teresa Institute Of Technology. All rights reserved.
+    </footer>
+</body>
+</html>
