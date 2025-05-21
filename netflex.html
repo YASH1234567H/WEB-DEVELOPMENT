@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Netflix Movie Carousel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #141414;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-weight: 700;
+      font-size: 36px;
+      color: #e50914;
+    }
+
+    .carousel-container {
+      overflow-x: auto;
+      overflow-y: hidden;
+      cursor: grab;
+      padding-bottom: 10px;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .carousel-container:active {
+      cursor: grabbing;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 20px;
+    }
+
+    .card {
+      flex: 0 0 auto;
+      width: 250px;
+      background-color: #1f1f1f;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .card:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .movie-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+
+    .genre {
+      font-size: 14px;
+      color: #bbb;
+      margin-bottom: 10px;
+    }
+
+    .description {
+      font-size: 13px;
+      line-height: 1.5;
+      color: #ddd;
+    }
+
+    .range-container {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    input[type="range"] {
+      width: 80%;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Top 10 Netflix Movies</h1>
+
+<div class="carousel-container" id="carouselContainer">
+  <div class="carousel-track" id="carouselTrack">
+    <!-- Movie Cards -->
+    <div class="card"><img src="image3.png"><div class="card-content"><div class="movie-title">Red Notice</div><div class="genre">Action</div><div class="description">An FBI agent teams up with a renowned art thief to catch a more notorious criminal.</div></div></div>
+    <div class="card"><img src="image4.png"><div class="card-content"><div class="movie-title">Extraction</div><div class="genre">Thriller</div><div class="description">A mercenary goes on a dangerous mission to rescue a kidnapped child.</div></div></div>
+    <div class="card"><img src="image5.png"><div class="card-content"><div class="movie-title">Bird Box</div><div class="genre">Horror</div><div class="description">Survive blindfolded in a world of unseen terror.</div></div></div>
+    <div class="card"><img src="image6.png"><div class="card-content"><div class="movie-title">The Gray Man</div><div class="genre">Spy</div><div class="description">CIA operative becomes the target of a manhunt.</div></div></div>
+    <div class="card"><img src="image7.png"><div class="card-content"><div class="movie-title">Don't Look Up</div><div class="genre">Comedy</div><div class="description">Astronomers warn the world of an approaching comet.</div></div></div>
+    <div class="card"><img src="image8.png"><div class="card-content"><div class="movie-title">The Irishman</div><div class="genre">Crime</div><div class="description">A hitman reflects on his life in the mob.</div></div></div>
+    <div class="card"><img src="image9.png"><div class="card-content"><div class="movie-title">Enola Holmes</div><div class="genre">Mystery</div><div class="description">Sherlock's sister goes on an adventure to find her mother.</div></div></div>
+    <div class="card"><img src="image10.png"><div class="card-content"><div class="movie-title">The Old Guard</div><div class="genre">Fantasy</div><div class="description">Immortal warriors fight to protect the world.</div></div></div>
+    <div class="card"><img src="image11.png"><div class="card-content"><div class="movie-title">The Midnight Sky</div><div class="genre">Sci-Fi</div><div class="description">A scientist races to contact a returning space crew.</div></div></div>
+    <div class="card"><img src="image12.png"><div class="card-content"><div class="movie-title">Army of the Dead</div><div class="genre">Horror</div><div class="description">Heist mission in a zombie-infested Las Vegas.</div></div></div>
+  </div>
+</div>
+
+<div class="range-container">
+  <input type="range" id="carouselRange" min="0" value="0" step="1">
+</div>
+
+<script>
+  const container = document.getElementById('carouselContainer');
+  const track = document.getElementById('carouselTrack');
+  const range = document.getElementById('carouselRange');
+
+  // Mouse drag scroll
+  let isDragging = false;
+  let startX;
+  let scrollStart;
+
+  container.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.pageX - container.offsetLeft;
+    scrollStart = container.scrollLeft;
+  });
+
+  container.addEventListener('mouseleave', () => isDragging = false);
+  container.addEventListener('mouseup', () => isDragging = false);
+
+  container.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - container.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    container.scrollLeft = scrollStart - walk;
+    updateRange();
+  });
+
+  // Range controls scroll
+  range.addEventListener('input', () => {
+    const maxScroll = container.scrollWidth - container.clientWidth;
+    container.scrollLeft = (range.value / 100) * maxScroll;
+  });
+
+  // Update range on scroll
+  function updateRange() {
+    const maxScroll = container.scrollWidth - container.clientWidth;
+    range.value = (container.scrollLeft / maxScroll) * 100;
+  }
+
+  container.addEventListener('scroll', updateRange);
+  window.addEventListener('load', () => {
+    range.max = 100;
+    updateRange();
+  });
+</script>
+
+</body>
+</html>

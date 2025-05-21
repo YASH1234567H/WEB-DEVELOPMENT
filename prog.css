@@ -1,0 +1,12 @@
+.container{
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    /*justify-content:space-around*/
+}
+.p{
+    font-size: 30;
+    padding: 25px;
+    width:25%;
+    text-align: center;
+}
